@@ -17,7 +17,7 @@ library(MplusAutomation)
 library(dplyr)
 
 #Set the working directory, e.g.,
-setwd("I:/Neurosurgery Research -Clinical/Nelson, Lin/Manuscripts/R01_IPCOM/TRACK_AcuteIRT/Data/06_SharedVersion")
+setwd("")
 
 dat <- read.csv("AcuteTBIIRTData20240801.csv")
 
