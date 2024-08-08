@@ -1,0 +1,35 @@
+TITLE: Nelson et al. - Data-driven characteriziation of traumatic brain injury severity
+  from clinical, neuroimaging, and blood-based biomarkers - EFA 
+! Script 2/2 - exploratory factor model
+
+DATA: FILE = "ShareDataMplus.dat";
+
+VARIABLE: 
+NAMES = id CT_SkullFx_R CT_Contusion_R CT_Shear_R CT_ExtraaxHematoma_R CT_EDH_R
+     CT_SDH_R CT_SAH_R CT_IVH_R CT_Edema_R CT_DownwardHerniation_R
+     CT_UpwardCerebellarHerniation_R CT_DuretHemorrhage_R CT_MidlineShift_R
+     LOCDuration_R PTADuration_R GcsVerbal GcsMotor GcsEyes
+     gfap_cat uchl_cat nse_cat s100_cat crp_cat; 
+
+USEVARIABLES = CT_SkullFx_R CT_Contusion_R CT_Shear_R CT_ExtraaxHematoma_R CT_EDH_R
+         CT_SDH_R CT_SAH_R CT_IVH_R CT_Edema_R CT_DownwardHerniation_R
+         CT_UpwardCerebellarHerniation_R CT_DuretHemorrhage_R CT_MidlineShift_R
+         LOCDuration_R PTADuration_R GcsVerbal GcsMotor GcsEyes
+         gfap_cat uchl_cat nse_cat s100_cat crp_cat;
+
+CATEGORICAL = CT_SkullFx_R CT_Contusion_R CT_Shear_R CT_ExtraaxHematoma_R CT_EDH_R
+         CT_SDH_R CT_SAH_R CT_IVH_R CT_Edema_R CT_DownwardHerniation_R
+         CT_UpwardCerebellarHerniation_R CT_DuretHemorrhage_R CT_MidlineShift_R
+         LOCDuration_R PTADuration_R GcsVerbal GcsMotor GcsEyes
+         gfap_cat uchl_cat nse_cat s100_cat crp_cat;
+
+MISSING = .;
+
+  ANALYSIS: ESTIMATOR = WLSMV;
+            ROTATION = GEOMIN;
+            TYPE=EFA 1 5;
+            PROCESSORS=4;
+
+  OUTPUT:	SAMPSTAT RESIDUAL;
+
+
